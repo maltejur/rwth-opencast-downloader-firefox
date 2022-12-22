@@ -10,7 +10,7 @@ _log = (str) => {
 function getStreams(callback) {
     _log("Injecting inner script...");
     const script = document.createElement('script');
-    script.src = chrome.runtime.getURL('/opencast-inject-inner.js');
+    script.src = browser.runtime.getURL('/opencast-inject-inner.js');
     document.body.append(script);
     _log("Script injected!")
     script.onload = function () {
@@ -54,5 +54,5 @@ setInterval(() => getStreams((res) => { sendResult(res) }), 1000);
 
 function sendResult(res) {
     _log("Sending result...");
-    chrome.runtime.sendMessage(res).catch((err) => { })
+    browser.runtime.sendMessage(res).catch((err) => { })
 }

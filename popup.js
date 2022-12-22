@@ -1,8 +1,8 @@
-chrome.runtime.onMessage.addListener(
+browser.runtime.onMessage.addListener(
     async function (request, sender, sendResponse) {
         // get current tab
         let queryOptions = { active: true, currentWindow: true };
-        let [currentTab] = await chrome.tabs.query(queryOptions);
+        let [currentTab] = await browser.tabs.query(queryOptions);
 
         // check if from current tab
         if (sender.tab && sender.tab.id === currentTab.id) {
